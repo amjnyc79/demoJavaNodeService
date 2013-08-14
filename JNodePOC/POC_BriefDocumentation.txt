@@ -1,0 +1,49 @@
+package com.amj.proofOfConcept
+
+** Every thing is subject to change, pending input / perspective.
+   This is a "rough 1st draft" and simply intended to be a proof of concept.
+
+Unit : Abstract Node Service
+       
+	This service would represent a "wrapper" for a node service.
+	Constructor( String script, String url)
+	Actions: extend the class;
+		 initialize
+		 start the service
+
+	Methods: execute ( )
+		 - validates the Implemented Business Logic, and NodeContextObject
+		   on pass : process a call to the running Node instance
+
+		   on fail : do nothing, simply notify or log.
+
+
+	Interfaces: ServiceInterface : 
+		    As of now, there is no functionality to this.
+		    It's intended purpose is to serve as a reference
+		    to consumers, producers.
+	
+		    This would serve as a "stub" in a facade type of design pattern.
+
+
+	VO / Objects:
+
+		    NodeContextObject: The DTO ( the name sounded cool.. ) 
+		    handles the message to be passers, and stores the response 
+		    from the Server. This traverses the multiple tiers.
+		    // TODO : Represent as a JAXB object ? 
+		    // this might work well for JSON conversions
+		    // @XmlRootElement( "NodeContextRoot" ) ?
+
+
+
+	ServiceLogicInterface
+
+		     Core purpose, to provide a flexible way to implement various 
+		     implementation logic that "tries" to remain as loosely coupled
+		     as possible by making the AbstractNodeService.execute( )
+		     aware of a validation method on the interface that returns a pass
+		     fail response.
+
+		      Takes 1 NodeContextObject as it's subject / parameter 
+		
